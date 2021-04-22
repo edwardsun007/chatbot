@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
 app.get('/', (req, res)=>{
-  res.send({'hello': 'there'})
+  res.send({'Who is': 'there'})
 });
 
 app.use('/users', usersRouter);
