@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var bodyParser = require('body-parser');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -9,6 +10,9 @@ var usersRouter = require('./routes/users');
 var testRouter = require('./routes/test');
 
 var app = express();
+//body parser
+app.use(bodyParser.json());
+require('./routes/dialogFlowRoutes')(app);
 
 // view engine setup
 console.log(__dirname);
