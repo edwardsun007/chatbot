@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# config and keys
+backend/config
+
 # production
 /build
 
