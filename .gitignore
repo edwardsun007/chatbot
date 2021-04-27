@@ -8,8 +8,8 @@
 # testing
 /coverage
 
-# config and keys
-backend/config
+# config keys for dev env
+/backend/config/dev.js
 
 # production
 /build
