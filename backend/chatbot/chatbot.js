@@ -1,5 +1,6 @@
 'use strict'
 const dialogflow = require('dialogflow');
+const structjson = require('./structjson');
 const config = require('../config/keys');
 
 const sessionClient = new dialogflow.SessionsClient();
@@ -35,6 +36,24 @@ module.exports = {
       console.error(err);
       return null;
     }
+  },
+
+  eventQuery: async function(event, parameters={}) {
+    let self = module.exports; // get ref to this module so we can use other methods here
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        event: {
+          name: event,
+          parameters: structjson.structProtoToJson(parameters),
+          languageCode: config.dialogFlowSessionLanguageCode,
+        },
+      }
+    };
+
+    let responses = await sessionClient.detectIntent(request);
+    responses = await self.handleAction(responses);
+    return responses;
   },
 
   handleAction: function(responses){
