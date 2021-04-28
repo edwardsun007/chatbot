@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start": "node ./backend/bin/www",
-    "backend": "nodemon ./backend/bin/www"
+    "backend": "nodemon ./backend/bin/www",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "author": "Edward Sun",
   "license": "ISC",
@@ -24,6 +26,7 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "concurrently": "^6.0.2",
     "nodemon": "^2.0.7"
   }
 }
